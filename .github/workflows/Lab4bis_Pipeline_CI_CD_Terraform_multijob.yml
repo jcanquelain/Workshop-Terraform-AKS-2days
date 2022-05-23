@@ -75,7 +75,7 @@ jobs:
     needs: Build-And-Upload-Terraform-Artifact
     
     steps:
-     - name: Checks-out du repository
+      - name: Checks-out du repository
         uses: actions/checkout@v2
 
       # Install the needed version of Terraform cli
