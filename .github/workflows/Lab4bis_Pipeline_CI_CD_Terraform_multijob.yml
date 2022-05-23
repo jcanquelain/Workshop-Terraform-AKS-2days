@@ -41,7 +41,21 @@ jobs:
     runs-on: runner-az-jcn-linux
 
     steps:
+      
+      - name: Checks-out du repository
+        uses: actions/checkout@v2
 
+      # Install the needed version of Terraform cli
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.1.7
+
+      # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
+      - name: Terraform Init
+        run: |
+          cd ./Terraform/Lab4_Pipeline_CI_CD_Terraform          
+          terraform init -backend-config="sas_token=${{ secrets.BACKENDSTORAGESASTOKEN }}"
       # Generates an execution plan for Terraform with tfplan file https://www.terraform.io/cli/commands/plan
       - name: Terraform Plan
         run: |
