@@ -39,9 +39,10 @@ jobs:
 
   Build-And-Upload-Terraform-Artifact:
     runs-on: runner-az-jcn-linux
+    needs: Validate-Terraform
 
     steps:
-      
+
       - name: Checks-out du repository
         uses: actions/checkout@v2
 
