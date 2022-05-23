@@ -40,7 +40,8 @@ jobs:
   Build-And-Upload-Terraform-Artifact:
     runs-on: ubuntu-latest
     needs: Validate-Terraform
-
+    environment: Integration
+    
     steps:
 
       - name: Checks-out du repository
