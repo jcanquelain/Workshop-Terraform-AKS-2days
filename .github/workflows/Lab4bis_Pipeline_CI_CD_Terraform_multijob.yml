@@ -32,21 +32,25 @@ jobs:
           cd ./Terraform/Lab4_Pipeline_CI_CD_Terraform
           terraform validate
 
-      - name: Terraform fmt
-        uses: dflook/terraform-fmt-check@v1
-        with:
-          path: ./Terraform/Lab4_Pipeline_CI_CD_Terraform
+      # - name: Terraform fmt
+      #   uses: dflook/terraform-fmt-check@v1
+      #   with:
+      #     path: ./Terraform/Lab4_Pipeline_CI_CD_Terraform
 
-  # Build-And-Upload-Terraform-Artifact:
-  #   runs-on: runner-az-jcn-linux
+  Build-And-Upload-Terraform-Artifact:
+    runs-on: runner-az-jcn-linux
 
-  #   steps:
+    steps:
 
-  #     # Generates an execution plan for Terraform with tfplan file https://www.terraform.io/cli/commands/plan
-  #     - name: Terraform Plan
-  #       run: |
-  #         cd ./Terraform/Lab4_Pipeline_CI_CD_Terraform
-  #         terraform plan -var 'AzureSubscriptionID=${{ secrets.SUBSCRIPTIONID }}' -var 'AzureClientSecret=${{ secrets.CLIENTSECRET }}' -var 'AzureClientID=${{ secrets.CLIENTID }}' -var 'AzureTenandID=${{ secrets.TENANTID }}' -lock=false -out=monplan.tfplan
+      # Generates an execution plan for Terraform with tfplan file https://www.terraform.io/cli/commands/plan
+      - name: Terraform Plan
+        run: |
+          cd ./Terraform/Lab4_Pipeline_CI_CD_Terraform
+          terraform plan -var 'AzureSubscriptionID=${{ secrets.SUBSCRIPTIONID }}' -var 'AzureClientSecret=${{ secrets.CLIENTSECRET }}' -var 'AzureClientID=${{ secrets.CLIENTID }}' -var 'AzureTenandID=${{ secrets.TENANTID }}' -lock=false -out=monplan.tfplan
+
+      - name: List output
+        run: 
+          ls -lisa
 
   # Apply-Terraform:
   #   runs-on: runner-az-jcn-linux
