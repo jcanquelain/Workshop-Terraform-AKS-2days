@@ -7,7 +7,7 @@ on:
 jobs:
 
   Validate-Terraform:
-    runs-on: runner-az-jcn-linux
+    runs-on: ubuntu-latest
 
     steps:
 
