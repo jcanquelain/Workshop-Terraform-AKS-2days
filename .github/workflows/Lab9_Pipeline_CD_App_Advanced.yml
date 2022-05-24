@@ -32,7 +32,8 @@ jobs:
             --ignore-test container-security-context-readonlyrootfilesystem \
             --ignore-test container-ephemeral-storage-request-equals-limit \
             --ignore-test container-ephemeral-storage-request-and-limit \
-            --output-format sarif
+            --output-format sarif > output_kubescore.json
+          ls -lisa
 #            --ignore-test container-resources \
 #            --ignore-test pod-probes \
 
