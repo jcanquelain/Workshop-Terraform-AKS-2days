@@ -36,12 +36,12 @@ jobs:
       - name: Terraform Plan
         run: |
           cd ./Terraform/Lab4_Pipeline_CI_CD_Terraform
-          terraform plan -destroy -var 'AzureSubscriptionID=${{ secrets.SUBSCRIPTIONID }}' -var 'AzureClientSecret=${{ secrets.CLIENTSECRET }}' -var 'AzureClientID=${{ secrets.CLIENTID }}' -var 'AzureTenandID=${{ secrets.TENANTID }}' -lock=false -out=monplan.tfplan
+          terraform plan -destroy -out=destroy.tfplan -lock=false 
               
       # apply a execution plan https://www.terraform.io/cli/commands/apply      
       - name: Terraform Apply
         run: |
           cd ./Terraform/Lab4_Pipeline_CI_CD_Terraform
-          terraform apply -auto-approve -lock=false "monplan.tfplan"
+          terraform apply -auto-approve -lock=false "destroy.tfplan"
     
 
